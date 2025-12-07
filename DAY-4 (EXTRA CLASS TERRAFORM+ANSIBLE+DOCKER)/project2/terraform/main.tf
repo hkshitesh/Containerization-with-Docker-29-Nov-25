@@ -34,8 +34,8 @@ resource "aws_key_pair" "generated_key" {
 }
 
 # Security group
-resource "aws_security_group" "allow_ssh" {
-  name = "allow_ssh_lab"
+resource "aws_security_group" "allow_ssh_new" {
+  name = "allow_ssh_lab_new"
 
   ingress {
     from_port   = 22
@@ -57,7 +57,7 @@ resource "aws_instance" "vm" {
   ami                         = "ami-0ecb62995f68bb549" # Ubuntu 22.04 (us-east-1)
   instance_type               = "t3.micro"
   key_name                    = aws_key_pair.generated_key.key_name
-  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  vpc_security_group_ids      = [aws_security_group.allow_ssh_new.id]
 
   tags = {
     Name = "TerraformAutomationVM"
