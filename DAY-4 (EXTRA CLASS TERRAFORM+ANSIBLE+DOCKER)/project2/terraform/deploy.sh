@@ -18,6 +18,7 @@ KEY_FILE=$(terraform output -raw private_key_file)
 
 echo "EC2 Public IP: $PUBLIC_IP"
 echo "PEM File: $KEY_FILE"
+chmod 400 $KEY_FILE
 
 echo "[4] Running Ansible automation..."
 cd ../ansible
